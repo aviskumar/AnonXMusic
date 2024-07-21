@@ -244,12 +244,11 @@ class YouTubeAPI:
         def audio_dl():
             ydl_optssx = {
                 "format": "bestaudio/best",
-                "outtmpl": "downloads/%(id)s.m4a",
+                "outtmpl": "downloads/%(id)s.%(ext)s",
                 "geo_bypass": True,
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
-                "prefer_ffmpeg": True,
             }
             x = yt_dlp.YoutubeDL(ydl_optssx)
             info = x.extract_info(link, False)
@@ -261,14 +260,12 @@ class YouTubeAPI:
 
         def video_dl():
             ydl_optssx = {
-                "format": "best",
-                "outtmpl": "downloads/%(id)s.mp4",
+                "format": "(bestvideo[height<=?720][width<=?1280][ext=mp4])+(bestaudio[ext=m4a])",
+                "outtmpl": "downloads/%(id)s.%(ext)s",
                 "geo_bypass": True,
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
-                "prefer_ffmpeg": True,
-                "postprocessors": [{"key": "FFmpegMetadata"}],
             }
             x = yt_dlp.YoutubeDL(ydl_optssx)
             info = x.extract_info(link, False)
