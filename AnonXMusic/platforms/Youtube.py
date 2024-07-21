@@ -249,6 +249,8 @@ class YouTubeAPI:
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
+                "postprocessors": [{"key": "FFmpegMetadata"}],
+                "prefer_ffmpeg": True,
             }
             x = yt_dlp.YoutubeDL(ydl_optssx)
             info = x.extract_info(link, False)
@@ -266,6 +268,8 @@ class YouTubeAPI:
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
+                "prefer_ffmpeg": True,
+                "postprocessors": [{"key": "FFmpegMetadata"}],
             }
             x = yt_dlp.YoutubeDL(ydl_optssx)
             info = x.extract_info(link, False)
