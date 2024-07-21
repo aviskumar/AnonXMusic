@@ -1,4 +1,4 @@
-import asyncio
+ import asyncio
 import os
 import re
 from typing import Union
@@ -244,13 +244,12 @@ class YouTubeAPI:
         def audio_dl():
             ydl_optssx = {
                 "format": "bestaudio/best",
-                "outtmpl": "downloads/%(id)s.%(ext)s",
+                "outtmpl": "downloads/%(id)s.m4a",
                 "geo_bypass": True,
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
                 "prefer_ffmpeg": True,
-                "postprocessors": [{"key": "FFmpegMetadata"}],
             }
             x = yt_dlp.YoutubeDL(ydl_optssx)
             info = x.extract_info(link, False)
@@ -262,8 +261,8 @@ class YouTubeAPI:
 
         def video_dl():
             ydl_optssx = {
-                "format": "(bestvideo[height<=?720][width<=?1280][ext=mp4])+(bestaudio[ext=m4a])",
-                "outtmpl": "downloads/%(id)s.%(ext)s",
+                "format": "best",
+                "outtmpl": "downloads/%(id)s.mp4",
                 "geo_bypass": True,
                 "nocheckcertificate": True,
                 "quiet": True,
